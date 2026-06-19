@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CHOU PEI HSUAN | Personal Website</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --card: #171a23;
+      --card-soft: #1f2330;
+      --text: #f4f4f5;
+      --muted: #a1a1aa;
+      --line: #2f3442;
+      --accent: #d6b36a;
+      --accent-soft: rgba(214, 179, 106, 0.14);
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 28px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      background: rgba(15, 17, 23, 0.92);
+      backdrop-filter: blur(14px);
+      z-index: 10;
+    }
+
+    .logo {
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      font-size: 14px;
+      color: var(--accent);
+    }
+
+    nav {
+      display: flex;
+      gap: 24px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    nav a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 96px 0 80px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(44px, 7vw, 82px);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+      margin-bottom: 24px;
+    }
+
+    .subtitle {
+      font-size: clamp(20px, 3vw, 30px);
+      color: var(--muted);
+      max-width: 720px;
+      margin-bottom: 28px;
+    }
+
+    .hero p {
+      color: #d4d4d8;
+      max-width: 760px;
+      font-size: 17px;
+    }
+
+    .hero-card {
+      background: linear-gradient(145deg, var(--card), var(--card-soft));
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 32px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.28);
+    }
+
+    .contact-row {
+      margin-bottom: 20px;
+    }
+
+    .contact-row span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 4px;
+    }
+
+    .contact-row strong {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .button-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+
+    .btn {
+      border: 1px solid var(--line);
+      padding: 12px 18px;
+      border-radius: 999px;
+      color: var(--text);
+      background: var(--card);
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .btn.primary {
+      background: var(--accent);
+      color: #151515;
+      border-color: var(--accent);
+    }
+
+    section {
+      padding: 72px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-title {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 40px;
+      margin-bottom: 36px;
+    }
+
+    h2 {
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .section-intro {
+      font-size: 28px;
+      line-height: 1.25;
+      letter-spacing: -0.03em;
+      max-width: 780px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 20px;
+    }
+
+    .job {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 40px;
+      padding: 28px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+    }
+
+    .date {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .role {
+      font-size: 23px;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .company {
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    ul {
+      padding-left: 20px;
+      color: #d4d4d8;
+    }
+
+    li {
+      margin-bottom: 7px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .info-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 24px;
+    }
+
+    .info-card h3 {
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    .info-card p {
+      color: var(--muted);
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .tag {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      border: 1px solid rgba(214, 179, 106, 0.28);
+      color: #ead39a;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    footer {
+      padding: 56px 0 80px;
+      text-align: center;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+    }
+
+    footer strong {
+      display: block;
+      color: var(--text);
+      font-size: 28px;
+      margin-bottom: 12px;
+      letter-spacing: -0.03em;
+    }
+
+    @media (max-width: 820px) {
+      header {
+        align-items: flex-start;
+        gap: 18px;
+        flex-direction: column;
+        position: static;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 64px;
+      }
+
+      .section-title,
+      .job {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="logo">CHOU PEI HSUAN</div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#languages">Languages</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="about">
+        <div>
+          <div class="eyebrow">Online CV / Personal Website</div>
+          <h1>CHOU<br>PEI HSUAN</h1>
+          <div class="subtitle">Arts Administration • Editorial Operations • International Coordination</div>
+          <p>
+            Detail-oriented and multilingual professional with over 10 years of experience in cultural project
+            administration, editorial operations, and international coordination. Experienced in managing
+            cross-cultural communication, event logistics, publication schedules, and collaborations with
+            international artists and speakers. Fluent in Chinese, English and Japanese, with an academic
+            background in Arts Administration and Foreign Languages.
+          </p>
+          <div class="button-row">
+            <a class="btn primary" href="mailto:choupeihsuan111@gmail.com">Contact Me</a>
+            <a class="btn" href="#experience">View Experience</a>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <div class="contact-row">
+            <span>Email</span>
+            <strong>choupeihsuan111@gmail.com</strong>
+          </div>
+          <div class="contact-row">
+            <span>Phone</span>
+            <strong>+81 070-1202-6395</strong>
+          </div>
+          <div class="contact-row">
+            <span>Location</span>
+            <strong>Tokyo / Taipei</strong>
+          </div>
+          <div class="contact-row">
+            <span>Focus</span>
+            <strong>International coordination, cultural projects, editorial management</strong>
+          </div>
+        </aside>
+      </section>
+
+      <section id="experience">
+        <div class="section-title">
+          <h2>Experience</h2>
+          <div class="section-intro">A cross-cultural career spanning editorial work, public programmes, exhibitions, events, translation, and international liaison.</div>
+        </div>
+
+        <div class="timeline">
+          <article class="job">
+            <div class="date">Jan 2020 – May 2024</div>
+            <div>
+              <div class="role">Writer / Regional Correspondent</div>
+              <div class="company">Tien Fa (Hakka Public Communication Foundation) · Taipei, Taiwan</div>
+              <ul>
+                <li>Coordinated end-to-end interview schedules, logistics, and multi-party communications for cultural features.</li>
+                <li>Acted as liaison between the editorial board, external contributors, and interviewees.</li>
+                <li>Ensured editorial milestones were met and delivered high-quality content under strict deadlines.</li>
+                <li>Developed story concepts through independent research, fieldwork, and stakeholder communication.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="job">
+            <div class="date">Jan 2018 – Jun 2019</div>
+            <div>
+              <div class="role">Writer</div>
+              <div class="company">Focus Art Magazine · Taipei, Taiwan</div>
+              <ul>
+                <li>Produced culture and lifestyle features covering arts scenes in Shanghai and Tokyo.</li>
+                <li>Conducted self-directed research, scheduling, interviews, and on-site reporting.</li>
+                <li>Managed editorial workflow independently from planning to final submission.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="job">
+            <div class="date">Jun 2016 – Dec 2017</div>
+            <div>
+              <div class="role">Project Coordinator</div>
+              <div class="company">WORKROOM Sweets Studio · Taipei, Taiwan</div>
+              <ul>
+                <li>Led brand launch initiatives and cross-industry collaboration events.</li>
+                <li>Coordinated partners including hotels, florists, cafés, and culinary studios.</li>
+                <li>Managed event logistics including partner negotiation, timeline planning, day-of operations, and post-event reporting.</li>
+                <li>Supported customer communication, product presentation, and event promotion.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="job">
+            <div class="date">Jun 2015 – Jun 2016</div>
+            <div>
+              <div class="role">Editor-in-Chief of Taipei Post</div>
+              <div class="company">Focus Art Magazine · Taipei, Taiwan</div>
+              <ul>
+                <li>Oversaw editorial operations for a city-focused publication.</li>
+                <li>Managed concept development, contributor management, copyediting, and production scheduling.</li>
+                <li>Coordinated external contributors and freelancers to ensure on-time delivery across each issue cycle.</li>
+                <li>Maintained publication quality through proofreading, schedule control, and editorial review.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="job">
+            <div class="date">Nov 2012 – May 2015</div>
+            <div>
+              <div class="role">Programme Coordinator – Forum and Course Division</div>
+              <div class="company">Fubon Art Foundation · Taipei, Taiwan</div>
+              <ul>
+                <li>Planned and executed public and thematic lecture series with a consistent programme of 10+ events per month.</li>
+                <li>Served as primary liaison for international speakers.</li>
+                <li>Managed travel logistics, briefing materials, and bilingual communications.</li>
+                <li>Supervised and mentored interns while allocating tasks to maintain efficient team workflow.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="job">
+            <div class="date">Oct 2011 – Oct 2012</div>
+            <div>
+              <div class="role">Programme Coordinator – Course Department</div>
+              <div class="company">XueXue Cultural Creative Institute · Taipei, Taiwan</div>
+              <ul>
+                <li>Managed approximately 10 thematic lecture sessions per month.</li>
+                <li>Achieved a 95% successful launch rate for course programmes.</li>
+                <li>Coordinated workshops by international photographers Michel Yamashita and Simon Chang.</li>
+                <li>Handled external communications, schedule coordination, and on-site operations.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="job">
+            <div class="date">Sep 2010 – Sep 2011</div>
+            <div>
+              <div class="role">Event & Promotions Coordinator</div>
+              <div class="company">Bounty Rhumerie · Shanghai, China</div>
+              <ul>
+                <li>Developed promotional copy for monthly and seasonal events at an international F&B venue.</li>
+                <li>Coordinated campaign scheduling with management.</li>
+                <li>Supported event planning, communications, and promotional operations.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="job">
+            <div class="date">May 2009 – Sep 2010</div>
+            <div>
+              <div class="role">Programme Coordinator – Exhibition Division</div>
+              <div class="company">Fubon Art Foundation · Taipei, Taiwan</div>
+              <ul>
+                <li>Coordinated the flagship annual exhibition “Very Fun Park.”</li>
+                <li>Liaised with artists from the United States, Australia, Indonesia, and Japan.</li>
+                <li>Managed venue logistics, installation schedules, and exhibition operations.</li>
+                <li>Oversaw production of the exhibition guidebook.</li>
+                <li>Managed a volunteer team of approximately 30 members, including scheduling and training.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="job">
+            <div class="date">Jun 2008 – Jan 2009</div>
+            <div>
+              <div class="role">Editorial Staff</div>
+              <div class="company">ART MAP / ART PLUS Magazine · Hong Kong, China</div>
+              <ul>
+                <li>Conducted interviews with performing arts organisations, curators, and gallery professionals.</li>
+                <li>Supported editorial workflow including contributor coordination, proofreading, and production management.</li>
+                <li>Assisted with article planning and publication schedules.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="job">
+            <div class="date">Sep 2005 – Feb 2008</div>
+            <div>
+              <div class="role">Translator (English–Chinese)</div>
+              <div class="company">Artist Magazine · Taipei, Taiwan</div>
+              <ul>
+                <li>Translated English-language art criticism and academic articles into Traditional Chinese.</li>
+                <li>Maintained accuracy, readability, and appropriate terminology for specialized art content.</li>
+                <li>Worked with one of Taiwan’s established art publications.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="education">
+        <div class="section-title">
+          <h2>Education</h2>
+          <div class="section-intro">Academic foundation in arts management, foreign languages, and international cultural studies.</div>
+        </div>
+
+        <div class="grid">
+          <div class="info-card">
+            <h3>ABK Gakkan Japanese Language School</h3>
+            <p>Japanese Language Studies · Tokyo, Japan · Jul 2024 – Mar 2026</p>
+          </div>
+          <div class="info-card">
+            <h3>Cours de civilisation française de la Sorbonne</h3>
+            <p>French Language Studies · Paris, France · Oct 2010 – May 2011</p>
+          </div>
+          <div class="info-card">
+            <h3>National Taipei University of the Arts</h3>
+            <p>Master of Arts – Arts Administration & Management · Sep 2004 – Feb 2008</p>
+          </div>
+          <div class="info-card">
+            <h3>National Taiwan University</h3>
+            <p>Bachelor of Arts – Foreign Languages & Literature · Sep 2000 – Jun 2004</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="languages">
+        <div class="section-title">
+          <h2>Languages</h2>
+          <div class="section-intro">Multilingual communication across Chinese, English, Japanese, and French-speaking contexts.</div>
+        </div>
+
+        <div class="grid">
+          <div class="info-card">
+            <h3>Chinese</h3>
+            <p>Native</p>
+          </div>
+          <div class="info-card">
+            <h3>English</h3>
+            <p>Business Proficiency · TOEIC 925</p>
+          </div>
+          <div class="info-card">
+            <h3>Japanese</h3>
+            <p>JLPT N1</p>
+          </div>
+          <div class="info-card">
+            <h3>French</h3>
+            <p>Conversational</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills">
+        <div class="section-title">
+          <h2>Skills</h2>
+          <div class="section-intro">Core strengths for international administration, cultural projects, and back-office coordination.</div>
+        </div>
+
+        <div class="tags">
+          <span class="tag">Project Coordination</span>
+          <span class="tag">Event Management</span>
+          <span class="tag">Editorial Operations</span>
+          <span class="tag">International Liaison</span>
+          <span class="tag">Cross-cultural Communication</span>
+          <span class="tag">Translation</span>
+          <span class="tag">Stakeholder Management</span>
+          <span class="tag">Schedule Management</span>
+          <span class="tag">Proofreading</span>
+          <span class="tag">Word</span>
+          <span class="tag">Excel</span>
+          <span class="tag">PowerPoint</span>
+          <span class="tag">Outlook</span>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact">
+      <strong>Let’s connect.</strong>
+      <p>Email: <a href="mailto:choupeihsuan111@gmail.com">choupeihsuan111@gmail.com</a></p>
+      <p>Phone: +81 070-1202-6395</p>
+    </footer>
+  </div>
+</body>
+</html>
